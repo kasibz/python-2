@@ -1,5 +1,7 @@
 # define your methods here.
 # ex1() - ex10()
+import random
+
 people_list = [
     {'name': 'alice',   'age': 20, 'weight': 160, 'sex': 'male',   'id': 1},
     {'name': 'bob',     'age': 10, 'weight': 130, 'sex': 'male',   'id': 2},
@@ -192,3 +194,50 @@ def ex8():
             return retval
     print(CarCollector.get_data())
 
+def ex9():
+
+    class Character:
+
+        def __init__(self, hit_points):
+            self.hit_points = hit_points
+
+        def fight(self, character):
+            random_number = random.randint(1, 20)
+            character.hit_points -= random_number
+            if character.hit_points < 0:
+                character.hit_points = 0
+    
+    class Fighter(Character):
+        def __init__(self, hit_points):
+            super().__init__(hit_points)
+            self.name = "Fighter"
+        
+        def __repr__(self) -> str:
+            return f"{self.name}: {self.hit_points} hit points."
+    
+    
+    class Dwarf(Character):
+        def __init__(self, hit_points):
+            super().__init__(hit_points)
+            self.name = "Dwarf"
+
+        def __repr__(self) -> str:
+            return f"{self.name}: {self.hit_points} hit points."
+    f = Fighter(18)
+    d = Dwarf(15)
+    print(f)
+    print(d)
+    f.fight(d)
+    d.fight(f)
+    print(f)
+    print(d)
+
+def ex10():
+    data = [
+        "1, 2322, 10.00, False",
+        "2, 5435, 60.30, True",
+        "3, 3433, 15.63, False",
+        "4, 8439, 12.77, False",
+        "5, 3424, 11.34, False",
+    ]
+    pass
