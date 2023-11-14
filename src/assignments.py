@@ -98,3 +98,32 @@ def ex5():
     print(word_counter.get_shortest_word()) # Returns the length of the shortest word.
     print(word_counter.get_longest_word()) 
             
+def ex6():
+    class TaxMan:
+        def __init__(self, items_list, tax) -> None:
+            self.items_list = items_list
+            self.tax = int(tax[0:len(tax)-1]) / 100
+            self.total = 0
+        
+        def calc_total(self):
+           total = sum(list(map(lambda i: i['price'], self.items_list)))
+           sales_amt = total * self.tax
+           self.total = sales_amt + total
+           '''
+           total is sum of all prices
+           then apply the sales tax
+           '''
+        
+        def get_total(self):
+            return self.total
+
+    items = [
+        {"id": 1, "desc": "clock", "price": 1.00},
+        {"id": 2, "desc": "socks", "price": 2.00},
+        {"id": 3, "desc": "razor", "price": 3.00},
+    ]
+
+    tm = TaxMan(items, "10%")
+    tm.calc_total()
+    print(tm.get_total())
+    pass
