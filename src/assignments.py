@@ -233,6 +233,17 @@ def ex9():
     print(d)
 
 def ex10():
+    class Invoice:
+
+        def __init__(self, data_string) -> None:
+            self.invoice_id = data_string.split(",")[0]
+            self.user_id = data_string.split(",")[1]
+            self.amount = data_string.split(",")[2]
+            self.paid = data_string.split(",")[3]
+
+        def __repr__(self) -> str:
+            return f"Invoice(invoice_id={self.invoice_id}, user_id={self.user_id}, amount={self.amount}, paid={self.paid})"
+    
     data = [
         "1, 2322, 10.00, False",
         "2, 5435, 60.30, True",
@@ -240,4 +251,8 @@ def ex10():
         "4, 8439, 12.77, False",
         "5, 3424, 11.34, False",
     ]
-    pass
+    invoice_list = []
+    for item in data:
+        invoice_list.append(Invoice(item))
+    
+    print(invoice_list)
